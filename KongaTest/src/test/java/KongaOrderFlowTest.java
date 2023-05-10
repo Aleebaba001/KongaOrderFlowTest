@@ -88,9 +88,9 @@ public class KongaOrderFlowTest {
         //13. Close the prompt message
         driver.findElement(By.xpath("/html/div/div/div[1]/button")).click();
 
-        //13. Click on the Checkout button
+        //14. Click on the Checkout button
         driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[3]/section/section/aside/div[3]/div/div[2]/button")).click();
-        Thread.sleep(15000);
+        Thread.sleep(13000);
 
     }
 
@@ -100,15 +100,29 @@ public class KongaOrderFlowTest {
         //Checkout Page
         Thread.sleep(5000);
 
-        //Address selected automatically
+        //15. Change Address
+        driver.findElement(By.xpath("//*[@id=\"mainContent\"]/div/form/div/div[1]/section[1]/div/div/div[1]/div[2]/div/button")).click();
+        Thread.sleep(5000);
 
-        //14. Click on the Pay Now button
+        //16. Click Add Delivery Address
+        driver.findElement(By.xpath("//*[@id=\"mainContent\"]/div/form/div/div[1]/section[1]/div/div/div[2]/div[1]/div[2]/div[1]/div/button")).click();
+        Thread.sleep(5000);
+
+        //17. Select Address
+        driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/section/aside/div[2]/div/div/div[2]/div/form/button")).click();
+        Thread.sleep(5000);
+
+        //18. Click on Use this Address
+        driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/section/aside/div[3]/div/div/div/a")).click();
+        Thread.sleep(5000);
+
+        //19. Click on the Pay Now button
         driver.findElement(By.xpath("//*[@id=\"mainContent\"]/div/form/div/div[1]/section[2]/div/div[2]/div[1]/div[1]/span/input")).click();
-        Thread.sleep(15000);
+        Thread.sleep(7000);
 
-        //15. Click on the Continue to Payment button
+        //20. Click on the Continue to Payment button
         driver.findElement(By.xpath("//*[@id=\"mainContent\"]/div/form/div/div[1]/section[2]/div/div[2]/div[3]/div[2]/div/button")).click();
-        Thread.sleep(15000);
+        Thread.sleep(10000);
 
     }
 
@@ -117,68 +131,68 @@ public class KongaOrderFlowTest {
 
         // Select Card as payment method on the iFrame
 
-        //16. Locate the iFrame
+        //21. Locate the iFrame
         WebElement iframe = driver.findElement(By.tagName("iframe"));
 
-        //17. Switch focus to the iFrame
+        //22. Switch focus to the iFrame
         driver.switchTo().frame("kpg-frame-component");
 
-        //18. Locate the Card button
+        //23. Locate the Card button
         WebElement Cardbutton = driver.findElement(By.className("Card"));
 
-        //19. Click the button
+        //24. Click the button
         Cardbutton.click();
         Thread.sleep(5000);
 
         // Enter card details
 
-        //20.Locate the card number field and enter an invalid card number
+        //25.Locate the card number field and enter an invalid card number
         WebElement CardNumberField = driver.findElement(By.id("card-number"));
         CardNumberField.sendKeys("4105567841055678");
 
-        //21. Locate the date field and enter an invalid date
+        //26. Locate the date field and enter an invalid date
         WebElement DateField = driver.findElement(By.id("expiry"));
         DateField.sendKeys("0129");
 
-        //22. Locate the CVV field and enter an invalid CVV
+        //27. Locate the CVV field and enter an invalid CVV
         WebElement CVVField = driver.findElement(By.id("cvv"));
         CVVField.sendKeys("420");
 
-        //23. Click on the Pay Now button
-        WebElement PayNow = driver.findElement(By.id("validateCardForm"));
-        PayNow.click();
-
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
         //Print Out the error message: Invalid Card Number
 
-        //24. Locate the error message
+        //28. Locate the error message
         WebElement ErrorMessage = driver.findElement(By.id("card-number_unhappy"));
+        Thread.sleep(3000);
 
-        //25. Print out the error message
+        //29. Print out the error message
         System.out.println(ErrorMessage.getText());
+        Thread.sleep(3000);
 
-        //26. Close the iFrame that displays the input card Modal
+        //30. Close the iFrame that displays the input card Modal
         WebElement CloseiFrame = driver.findElement(By.className("data-card__close"));
         CloseiFrame.click();
 
-        //24. Switch out of iFrame
+        //31. Switch out of iFrame
         driver.switchTo().defaultContent();
 
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
     }
 
 
     @AfterTest
     public void closeBrowser() {
-        //27. Close the browser
+        //32. Close the browser
         driver.quit();
     }
 }
 
 
 /**
+ *INSTRUCTIONS
+
  * Visit the URL (https://www.konga.com)
  * Sign in to Konga Successfully
  * From the Categories, click on the “Computers and Accessories"
