@@ -110,11 +110,11 @@ public class KongaOrderFlowTest {
 
         //17. Select Address
         driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/section/aside/div[2]/div/div/div[2]/div/form/button")).click();
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         //18. Click on Use this Address
         driver.findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/section/aside/div[3]/div/div/div/a")).click();
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         //19. Click on the Pay Now button
         driver.findElement(By.xpath("//*[@id=\"mainContent\"]/div/form/div/div[1]/section[2]/div/div[2]/div[1]/div[1]/span/input")).click();
