@@ -73,9 +73,26 @@ public class KongaOrderFlowTest {
         driver.findElement(By.xpath("//*[@id=\"mainContent\"]/section[3]/section/div/section/div[2]/div[2]/ul/li[3]/a/ul/li[1]/a/label/span")).click();
         Thread.sleep(18000);
 
+        //10a. Close the pop-up modal (iframe)
+
+        //10b. locate iframe
+        WebElement iframe = driver.findElement(By.tagName("iframe"));
+
+        //10c. switch to iframe
+        driver.switchTo().frame("preview-notification-frame");
+
+        //10d. close the popup
+        WebElement ClosePopUp = driver.findElement(By.id("NC_CLOSE_ICON"));
+        ClosePopUp.click();
+
+        //10e. Switch out of iframe
+        driver.switchTo().defaultContent();
+        Thread.sleep(5000);
+
         //11. Add an item to the cart
         driver.findElement(By.xpath("//*[@id=\"mainContent\"]/section[3]/section/section/section/section/ul/li[1]/div/div/div[2]/form/div[3]/button")).click();
-        Thread.sleep(10000);
+        Thread.sleep(3000);
+
     }
 
     @Test (priority = 2)
@@ -149,10 +166,12 @@ public class KongaOrderFlowTest {
         //25.Locate the card number field and enter an invalid card number
         WebElement CardNumberField = driver.findElement(By.id("card-number"));
         CardNumberField.sendKeys("4105567841055678");
+        Thread.sleep(2000);
 
         //26. Locate the date field and enter an invalid date
         WebElement DateField = driver.findElement(By.id("expiry"));
         DateField.sendKeys("0129");
+        Thread.sleep(2000);
 
         //27. Locate the CVV field and enter an invalid CVV
         WebElement CVVField = driver.findElement(By.id("cvv"));
